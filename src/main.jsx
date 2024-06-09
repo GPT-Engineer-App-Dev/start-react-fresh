@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { SupabaseProvider } from "./integrations/supabase/index.js";
+
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 const colors = {
