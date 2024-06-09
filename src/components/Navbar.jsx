@@ -1,8 +1,10 @@
 import { Box, Flex, HStack, Link, IconButton, useDisclosure, Stack } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { useSupabaseAuth } from "../integrations/supabase/auth.jsx";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { session, logout } = useSupabaseAuth();
 
   return (
     <>
@@ -27,6 +29,15 @@ const Navbar = () => {
               <Link px={2} py={1} rounded="md" _hover={{ textDecoration: "none", bg: "brand.800" }} href="#">
                 Contact
               </Link>
+              {session ? (
+                <Link px={2} py={1} rounded="md" _hover={{ textDecoration: "none", bg: "brand.800" }} onClick={logout}>
+                  Logout
+                </Link>
+              ) : (
+                <Link px={2} py={1} rounded="md" _hover={{ textDecoration: "none", bg: "brand.800" }} href="/login">
+                  Login
+                </Link>
+              )}
             </HStack>
           </HStack>
         </Flex>
@@ -43,6 +54,15 @@ const Navbar = () => {
               <Link px={2} py={1} rounded="md" _hover={{ textDecoration: "none", bg: "brand.800" }} href="#">
                 Contact
               </Link>
+              {session ? (
+                <Link px={2} py={1} rounded="md" _hover={{ textDecoration: "none", bg: "brand.800" }} onClick={logout}>
+                  Logout
+                </Link>
+              ) : (
+                <Link px={2} py={1} rounded="md" _hover={{ textDecoration: "none", bg: "brand.800" }} href="/login">
+                  Login
+                </Link>
+              )}
             </Stack>
           </Box>
         ) : null}
